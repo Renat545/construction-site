@@ -1,49 +1,76 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="ru">
 
-body {
-    font-family: Arial, sans-serif;
-    background: #1f1f1f;
-    color: white;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>СЗ «НОВА» | Строительство домов под ключ</title>
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 25px 80px;
-}
+    <link rel="stylesheet" href="style.css">
+</head>
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin: 0 15px;
-}
+<body>
 
-section {
-    padding: 100px 80px;
-}
+    <header>
+        <div class="logo">
+            <h2>СЗ «НОВА»</h2>
+        </div>
 
-h1 {
-    font-size: 56px;
-    margin-bottom: 20px;
-}
+        <nav>
+            <a href="#">Услуги</a>
+            <a href="#">Проекты</a>
+            <a href="#">Калькулятор</a>
+            <a href="#">Отзывы</a>
+            <a href="#">Контакты</a>
+        </nav>
 
-p {
-    font-size: 20px;
-    margin-bottom: 35px;
-    max-width: 500px;
-}
+        <div class="phone">
+            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
+        </div>
+    </header>
 
-button {
-    background: #f59e0b;
-    color: white;
-    border: none;
-    padding: 18px 35px;
-    border-radius: 8px;
-    font-size: 18px;
-    cursor: pointer;
-}
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="subtitle">
+                    СПЕЦИАЛИЗИРОВАННЫЙ ЗАСТРОЙЩИК
+                </span>
+
+                <h1>
+                    Строим дома,<br>
+                    в которых хочется жить.
+                </h1>
+
+                <p>
+                    Проектируем и строим современные дома под ключ.
+                    Фиксированная смета, соблюдение сроков и гарантия качества.
+                </p>
+
+                <div class="buttons">
+                    <button class="primary">
+                        Рассчитать стоимость
+                    </button>
+
+                    <button class="secondary">
+                        Наши проекты
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="hero-image">
+
+                <!-- Фото появится здесь -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>
