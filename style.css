@@ -1,76 +1,125 @@
-<!DOCTYPE html>
-<html lang="ru">
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>СЗ «НОВА» | Строительство домов под ключ</title>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <link rel="stylesheet" href="style.css">
-</head>
+body {
+    font-family: "Manrope", sans-serif;
+    background: #171717;
+    color: #ffffff;
+}
 
-<body>
+header {
+    width: 100%;
+    padding: 30px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    <header>
-        <div class="logo">
-            <h2>СЗ «НОВА»</h2>
-        </div>
+.logo h2 {
+    font-size: 28px;
+    font-weight: 800;
+}
 
-        <nav>
-            <a href="#">Услуги</a>
-            <a href="#">Проекты</a>
-            <a href="#">Калькулятор</a>
-            <a href="#">Отзывы</a>
-            <a href="#">Контакты</a>
-        </nav>
+nav {
+    display: flex;
+    gap: 35px;
+}
 
-        <div class="phone">
-            <a href="tel:+70000000000">+7 (000) 000-00-00</a>
-        </div>
-    </header>
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: .3s;
+}
 
-    <main>
+nav a:hover {
+    color: #f59e0b;
+}
 
-        <section class="hero">
+.phone a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
 
-            <div class="hero-content">
+.hero {
+    width: 100%;
+    min-height: calc(100vh - 90px);
 
-                <span class="subtitle">
-                    СПЕЦИАЛИЗИРОВАННЫЙ ЗАСТРОЙЩИК
-                </span>
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-                <h1>
-                    Строим дома,<br>
-                    в которых хочется жить.
-                </h1>
+    padding: 0 8%;
+}
 
-                <p>
-                    Проектируем и строим современные дома под ключ.
-                    Фиксированная смета, соблюдение сроков и гарантия качества.
-                </p>
+.hero-content {
+    width: 50%;
+}
 
-                <div class="buttons">
-                    <button class="primary">
-                        Рассчитать стоимость
-                    </button>
+.subtitle {
+    color: #f59e0b;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
 
-                    <button class="secondary">
-                        Наши проекты
-                    </button>
-                </div>
+.hero h1 {
+    font-size: 64px;
+    line-height: 1.1;
+    margin: 20px 0;
+}
 
-            </div>
+.hero p {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #cfcfcf;
+    max-width: 550px;
+}
 
-            <div class="hero-image">
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+}
 
-                <!-- Фото появится здесь -->
+button {
+    padding: 18px 34px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+}
 
-            </div>
+.primary {
+    background: #f59e0b;
+    color: white;
+    border: none;
+}
 
-        </section>
+.primary:hover {
+    transform: translateY(-3px);
+}
 
-    </main>
+.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid #555;
+}
 
-</body>
+.secondary:hover {
+    border-color: #f59e0b;
+}
 
-</html>
+.hero-image {
+    width: 42%;
+    height: 600px;
+    border-radius: 24px;
+    background: #2d2d2d;
+}
