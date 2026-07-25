@@ -15,11 +15,14 @@
 <header>
 
     <div class="logo">
-        <h2>НОВА</h2>
-        <span>СПЕЦИАЛИЗИРОВАННЫЙ ЗАСТРОЙЩИК</span>
+        <span class="logo-mark" aria-hidden="true"></span>
+        <div class="logo-text">
+            <h2>НОВА</h2>
+            <span>СПЕЦИАЛИЗИРОВАННЫЙ ЗАСТРОЙЩИК</span>
+        </div>
     </div>
 
-    <nav>
+    <nav id="main-nav">
         <a href="#">О компании</a>
         <a href="#">Проекты</a>
         <a href="#">Услуги</a>
@@ -33,6 +36,12 @@
         </a>
     </div>
 
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
 </header>
 
 
@@ -42,9 +51,11 @@
 
     <div class="hero-content">
 
+        <p class="eyebrow">Строительство частных домов · с 2014 года</p>
+
         <h1>
             Строим дома,<br>
-            в которых хочется жить
+            в которых <em>хочется</em> жить
         </h1>
 
         <p>
@@ -57,7 +68,10 @@
         <div class="buttons">
 
             <button class="primary">
-                Рассчитать стоимость
+                <span>Рассчитать стоимость</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
             </button>
 
             <button class="secondary">
@@ -103,6 +117,17 @@
 
 </main>
 
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('main-nav');
+
+        burger.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('open');
+            burger.classList.toggle('open', isOpen);
+            burger.setAttribute('aria-expanded', isOpen);
+        });
+    </script>
 
 </body>
 
