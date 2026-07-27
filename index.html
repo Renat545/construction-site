@@ -585,7 +585,6 @@ nav a:focus-visible,
     align-items: start;
 }
 
-/* Асимметричная раскладка колонок */
 .project-card {
     background: var(--bg-surface);
     border: 1px solid rgba(255, 255, 255, 0.06);
@@ -663,7 +662,6 @@ nav a:focus-visible,
     margin-bottom: 12px;
 }
 
-/* Раскрывающееся окно деталей */
 .project-details-window {
     max-height: 0;
     overflow: hidden;
@@ -711,117 +709,75 @@ nav a:focus-visible,
 }
 
 
-/* УСЛУГИ */
+/* УСЛУГИ (АККОРДЕОН) */
 
 .services {
     padding: 120px 7%;
     background: var(--bg);
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 44px 40px;
+.services-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 900px;
 }
 
-.service-item {
-    border-top: 1px solid rgba(255,255,255,.14);
-    padding-top: 22px;
+.accordion-item {
+    background: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
 }
 
-.service-item h3 {
-    font-size: 17px;
-    font-weight: 700;
+.accordion-item:hover {
+    border-color: rgba(197, 155, 85, 0.3);
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 24px 28px;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.accordion-header .icon {
     color: var(--gold-light);
-    margin-bottom: 8px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
-.service-item p {
+.accordion-item.active .accordion-header .icon {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+    padding: 0 28px;
+    color: var(--text-muted);
     font-size: 15px;
     line-height: 1.65;
-    color: var(--text-dim);
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 250px;
+    padding: 0 28px 24px 28px;
 }
 
 
-/* КАЛЬКУЛЯТОР */
-
-.calculator {
-    padding: 120px 7%;
-}
-
-.calculator-grid {
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 60px;
-    align-items: start;
-}
-
-.calc-field {
-    margin-bottom: 28px;
-}
-
-.calc-field label {
-    display: block;
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-}
-
-.calc-field .calc-value {
-    color: var(--gold-light);
-    font-weight: 700;
-}
-
-.calc-field input[type="range"] {
-    width: 100%;
-    accent-color: var(--gold);
-}
-
-.calc-field select {
-    width: 100%;
-    padding: 13px 16px;
-    background: rgba(255,255,255,.03);
-    border: 1px solid rgba(255,255,255,.16);
-    border-radius: 6px;
-    color: var(--white);
-    font-family: inherit;
-    font-size: 15px;
-}
-
-.calc-result {
-    position: relative;
-    padding: 46px 36px;
-    background: var(--bg-surface);
-    border: 1px solid rgba(255,255,255,.06);
-    border-radius: 6px;
-}
-
-.calc-result .calc-label {
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-dim);
-    margin-bottom: 14px;
-}
-
-.calc-result .calc-price {
-    font-family: "Fraunces", serif;
-    font-weight: 500;
-    font-size: clamp(28px, 2.6vw, 38px);
-    color: var(--gold-light);
-    margin-bottom: 18px;
-    line-height: 1.2;
-}
-
-.calc-result p.calc-note {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-dim);
-    margin-bottom: 26px;
-}
-
-
-/* КОНТАКТЫ */
+/* КОНТАКТЫ (СЕТКА 50/50) */
 
 .contacts {
     padding: 120px 7%;
@@ -830,7 +786,7 @@ nav a:focus-visible,
 
 .contacts-grid {
     display: grid;
-    grid-template-columns: .8fr 1.2fr;
+    grid-template-columns: 1fr 1fr;
     gap: 70px;
 }
 
@@ -968,11 +924,6 @@ footer {
         max-width: 500px;
     }
 
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .calculator-grid,
     .contacts-grid {
         grid-template-columns: 1fr;
         gap: 50px;
@@ -990,12 +941,10 @@ footer {
 
     .projects,
     .services,
-    .calculator,
     .contacts {
         padding: 70px 6%;
     }
 
-    /* Мобильная сетка проектов */
     .projects-grid {
         grid-template-columns: 1fr;
     }
@@ -1003,10 +952,6 @@ footer {
     .project-card:nth-child(n) {
         grid-column: span 1 !important;
         margin-top: 0 !important;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
     }
 
     .footer-top {
@@ -1144,7 +1089,6 @@ footer {
         <a href="#about">О компании</a>
         <a href="#projects">Проекты</a>
         <a href="#services">Услуги</a>
-        <a href="#calculator">Калькулятор</a>
         <a href="#contacts">Контакты</a>
     </nav>
 
@@ -1169,8 +1113,8 @@ footer {
         <p>Проектирование и строительство частных домов под ключ. От идеи до готового пространства.</p>
 
         <div class="buttons">
-            <button class="primary" type="button" onclick="document.getElementById('calculator').scrollIntoView({behavior: 'smooth'})">
-                <span>Рассчитать стоимость</span>
+            <button class="primary" type="button" onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})">
+                <span>Обсудить проект</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -1187,11 +1131,7 @@ footer {
             </div>
             <div class="stat">
                 <strong>250+</strong>
-                <span>домов построено</span>
-            </div>
-            <div class="stat">
-                <strong>10</strong>
-                <span>лет гарантии</span>
+                <span>объектов построено</span>
             </div>
             <div class="stat">
                 <strong>100%</strong>
@@ -1211,21 +1151,21 @@ footer {
 
     <div class="about-content">
         <p class="eyebrow">О компании</p>
-        <h2>Строим так, будто<br>жить в доме <em>предстоит нам самим</em></h2>
-        <p class="lead">НОВА — специализированный застройщик частных домов. Работаем с 2014 года: сами проектируем, сами строим, сами отвечаем за результат — без подрядчиков-посредников.</p>
+        <h2>Надежная инфраструктура как<br><em>фундамент для вашего бизнеса</em></h2>
+        <p class="lead">Специализируемся на проектировании и возведении коммерческих и частных объектов. Мы берем на себя весь комплекс работ — от первичных чертежей и инженерных изысканий до сдачи полностью готового объекта.</p>
 
         <ul class="about-points">
             <li>
-                <h3>Полный цикл</h3>
-                <p>От архитектурного проекта до сдачи ключей. Один договор, одна команда, одна ответственность.</p>
+                <h3>Полный цикл генерального подряда</h3>
+                <p>Единый центр ответственности: проектирование, инженерия и строительно-монтажные работы под прямым управлением нашей команды.</p>
             </li>
             <li>
-                <h3>Своя бригада</h3>
-                <p>Не привлекаем случайных субподрядчиков — на площадке работают наши штатные строители.</p>
+                <h3>Собственный штат и техника</h3>
+                <p>На объектах работают постоянные квалифицированные бригады с использованием собственной материально-технической базы.</p>
             </li>
             <li>
-                <h3>Фиксированная смета</h3>
-                <p>Стоимость закрепляется в договоре на старте и не меняется в процессе строительства.</p>
+                <h3>Фиксированный бюджет и сроки</h3>
+                <p>Утверждаем смету и график реализации до начала работ. Гарантируем прозрачность финансовой отчетности.</p>
             </li>
         </ul>
     </div>
@@ -1364,7 +1304,7 @@ footer {
                 </svg>
             </button>
             <div class="project-details-window">
-                <p>Премиальный коттедж с гаражом на 2 авто, консольным балконом и эксплуатируемой кровлей. Фасад из натурального камня и ригельного кирпича.</p>
+                <p>Просторный загородный комплекс с отдельным банным блоком, подземным гаражом и современной инженерной инфраструктурой.</p>
                 <button class="secondary" style="padding: 10px 20px; font-size: 13px;" type="button">Запросить планировку</button>
             </div>
         </div>
@@ -1376,123 +1316,94 @@ footer {
 <section class="services" id="services">
     <div class="section-head">
         <p class="eyebrow">Услуги</p>
-        <h2>От участка до готового дома</h2>
-        <p>Берём на себя весь цикл строительства — не разбиваем его между разными подрядчиками.</p>
+        <h2>Наши компетенции</h2>
+        <p>Решаем комплексные задачи в сфере проектирования, возведения и технического сопровождения объектов.</p>
     </div>
 
-    <div class="services-grid">
-        <div class="service-item">
-            <h3>Проектирование</h3>
-            <p>Индивидуальный архитектурный проект под рельеф участка, инсоляцию и ваш образ жизни.</p>
-        </div>
-        <div class="service-item">
-            <h3>Строительство под ключ</h3>
-            <p>От фундамента до финальной отделки — силами одной штатной бригады, без смены подрядчиков.</p>
-        </div>
-        <div class="service-item">
-            <h3>Инженерные системы</h3>
-            <p>Отопление, электрика, водоснабжение и вентиляция — проектируем и монтируем как единую систему.</p>
-        </div>
-        <div class="service-item">
-            <h3>Согласования и документы</h3>
-            <p>Разрешительная документация, технический план и постановка дома на кадастровый учёт.</p>
-        </div>
-        <div class="service-item">
-            <h3>Ландшафт и благоустройство</h3>
-            <p>Дорожки, освещение участка и озеленение — продолжение архитектуры дома за его пределами.</p>
-        </div>
-        <div class="service-item">
-            <h3>Гарантийное обслуживание</h3>
-            <p>10 лет гарантии на конструктив и сопровождение дома после сдачи ключей.</p>
-        </div>
-    </div>
-</section>
-
-
-<section class="calculator section-blueprint" id="calculator">
-    <div class="section-head">
-        <p class="eyebrow">Калькулятор</p>
-        <h2>Предварительная стоимость</h2>
-        <p>Ориентировочный расчёт за несколько кликов. Точную смету составим после выезда инженера на участок.</p>
-    </div>
-
-    <div class="calculator-grid">
-        <div class="calculator-form">
-            <div class="calc-field">
-                <label for="calc-area">Площадь дома: <span class="calc-value" id="calc-area-value">150</span> м²</label>
-                <input type="range" id="calc-area" min="60" max="400" step="10" value="150">
-            </div>
-
-            <div class="calc-field">
-                <label for="calc-floors">Этажность</label>
-                <select id="calc-floors">
-                    <option value="1">Один этаж</option>
-                    <option value="1.05">Два этажа</option>
-                    <option value="1.1">Три этажа</option>
-                </select>
-            </div>
-
-            <div class="calc-field">
-                <label for="calc-finish">Класс отделки</label>
-                <select id="calc-finish">
-                    <option value="45000">Стандарт</option>
-                    <option value="65000">Комфорт</option>
-                    <option value="95000">Премиум</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="calc-result frame-corners">
-            <p class="calc-label">Ориентировочно</p>
-            <p class="calc-price" id="calc-price">6,8–8,3 млн ₽</p>
-            <p class="calc-note">Расчёт учитывает материалы и работу под ключ. Не включает инженерные изыскания и подключение коммуникаций.</p>
-            <button class="primary" type="button" onclick="document.getElementById('contacts').scrollIntoView({behavior: 'smooth'})">
-                <span>Уточнить у инженера</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <div class="services-accordion">
+        <div class="accordion-item">
+            <button class="accordion-header" type="button">
+                <span>Архитектурное и инженерное проектирование</span>
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </button>
+            <div class="accordion-content">
+                <p>Разработка полного комплекта эскизной, проектной и рабочей документации, геологические изыскания и адаптация под рельеф участка.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header" type="button">
+                <span>Строительство и генеральный подряд</span>
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="accordion-content">
+                <p>Полный цикл строительно-монтажных работ: от возведения фундамента и монолитных каркасов до монтажа стропильных систем и фасадов.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header" type="button">
+                <span>Монтаж инженерных систем</span>
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="accordion-content">
+                <p>Проектирование и устройство сетей электроснабжения, отопления, вентиляции, кондиционирования, водоснабжения и бытовой канализации.</p>
+            </div>
+        </div>
+
+        <div class="accordion-item">
+            <button class="accordion-header" type="button">
+                <span>Благоустройство территории</span>
+                <svg class="icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="accordion-content">
+                <p>Вертикальная планировка, мощение дорожек и парковок, монтаж системы ливневого водоотвода и архитектурного освещения участка.</p>
+            </div>
         </div>
     </div>
 </section>
 
 
 <section class="contacts" id="contacts">
+    <div class="section-head">
+        <p class="eyebrow">Контакты</p>
+        <h2>Обсудить ваш проект</h2>
+        <p>Оставьте заявку или свяжитесь с нами удобным способом для получения консультации.</p>
+    </div>
+
     <div class="contacts-grid">
         <div class="contacts-info">
-            <p class="eyebrow">Контакты</p>
-            <h2 style="font-family:'Fraunces',serif; font-weight:500; font-size:clamp(28px,3vw,38px); line-height:1.25; margin-bottom:36px;">Обсудим ваш дом</h2>
-
             <div class="contact-line">
                 <span>Телефон</span>
                 <a href="tel:+70000000000">+7 (000) 000-00-00</a>
             </div>
             <div class="contact-line">
-                <span>Почта</span>
-                <a href="mailto:info@nova-house.ru">info@nova-house.ru</a>
+                <span>Электронная почта</span>
+                <a href="mailto:info@nova-dev.ru">info@nova-dev.ru</a>
             </div>
             <div class="contact-line">
-                <span>Офис</span>
-                <strong>Город, ул. Примерная, 1</strong>
+                <span>Главный офис</span>
+                <strong>г. Москва, ул. Архитектора Щусева, д. 10</strong>
             </div>
             <div class="contact-line">
-                <span>Часы работы</span>
-                <strong>Пн–Сб, 9:00–19:00</strong>
+                <span>График работы</span>
+                <strong>Пн — Пт: с 9:00 до 20:00</strong>
             </div>
         </div>
 
-        <form class="contact-form" id="contact-form">
-            <input type="text" name="name" placeholder="Ваше имя" required>
-            <input type="tel" name="phone" placeholder="Телефон" required>
-            <textarea name="message" placeholder="Коротко о проекте"></textarea>
-
-            <button class="primary" type="submit" style="justify-self:start;">
-                <span>Отправить заявку</span>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </button>
-
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Заявка успешно отправлена!');">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="tel" placeholder="Номер телефона" required>
+            <textarea placeholder="Опишите задачу или параметры объекта"></textarea>
+            <button class="primary" type="submit">Отправить заявку</button>
             <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
         </form>
     </div>
@@ -1511,100 +1422,69 @@ footer {
                     <span>СПЕЦИАЛИЗИРОВАННЫЙ ЗАСТРОЙЩИК</span>
                 </div>
             </div>
-            <p>Проектируем и строим частные дома под ключ с 2014 года.</p>
+            <p>Проектирование и строительство объектов любой сложности под ключ.</p>
         </div>
 
         <div class="footer-col">
-            <h4>Разделы</h4>
+            <h4>Навигация</h4>
             <a href="#about">О компании</a>
             <a href="#projects">Проекты</a>
             <a href="#services">Услуги</a>
-            <a href="#calculator">Калькулятор</a>
             <a href="#contacts">Контакты</a>
         </div>
 
         <div class="footer-col">
-            <h4>Связь</h4>
+            <h4>Контакты</h4>
             <a href="tel:+70000000000">+7 (000) 000-00-00</a>
-            <a href="mailto:info@nova-house.ru">info@nova-house.ru</a>
+            <a href="mailto:info@nova-dev.ru">info@nova-dev.ru</a>
         </div>
     </div>
 
     <div class="footer-bottom">
-        <span class="diamond" aria-hidden="true"></span>
-        <span>© 2026 НОВА. Все права защищены.</span>
+        <span class="diamond"></span>
+        <p>© 2026 НОВА. Все права защищены.</p>
     </div>
 </footer>
 
-
-    <script>
-        // Бургер меню
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('main-nav');
-
+<script>
+    // Мобильное меню
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('main-nav');
+    if (burger && nav) {
         burger.addEventListener('click', () => {
             const isOpen = nav.classList.toggle('open');
             burger.classList.toggle('open', isOpen);
             burger.setAttribute('aria-expanded', isOpen);
         });
+    }
 
-
-        // Раскрытие информации в кейсах
-        document.querySelectorAll('.project-expand-btn').forEach(btn => {
+    // Раскрытие карточек проектов
+    document.querySelectorAll('.project-card').forEach(card => {
+        const btn = card.querySelector('.project-expand-btn');
+        if (btn) {
             btn.addEventListener('click', (e) => {
-                const card = e.target.closest('.project-card');
+                e.stopPropagation();
                 card.classList.toggle('expanded');
-                const btnText = btn.querySelector('span');
-                if (card.classList.contains('expanded')) {
-                    btnText.textContent = 'Свернуть детали';
-                } else {
-                    btnText.textContent = 'Подробнее о проекте';
-                }
             });
-        });
-
-
-        // Калькулятор стоимости
-        const areaInput = document.getElementById('calc-area');
-        const areaValue = document.getElementById('calc-area-value');
-        const floorsSelect = document.getElementById('calc-floors');
-        const finishSelect = document.getElementById('calc-finish');
-        const priceOutput = document.getElementById('calc-price');
-
-        function formatMillions(value) {
-            return (value / 1000000).toLocaleString('ru-RU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
         }
+    });
 
-        function updateCalculator() {
-            const area = Number(areaInput.value);
-            const floorsFactor = Number(floorsSelect.value);
-            const ratePerMeter = Number(finishSelect.value);
-
-            areaValue.textContent = area;
-
-            const base = area * ratePerMeter * floorsFactor;
-            const min = base * 0.92;
-            const max = base * 1.1;
-
-            priceOutput.textContent = `${formatMillions(min)}–${formatMillions(max)} млн ₽`;
-        }
-
-        [areaInput, floorsSelect, finishSelect].forEach(el => {
-            el.addEventListener('input', updateCalculator);
+    // Раскрывающийся список (аккордеон) в Услугах
+    document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Закрываем остальные открытые вкладки
+            document.querySelectorAll('.accordion-item').forEach(el => el.classList.remove('active'));
+            
+            // Переключаем текущую
+            if (!isActive) {
+                item.classList.add('active');
+            }
         });
-
-        updateCalculator();
-
-
-        // Форма контактов
-        const contactForm = document.getElementById('contact-form');
-
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            contactForm.innerHTML = '<p style="color: var(--gold-light); font-size: 17px; padding: 20px 0;">Спасибо! Заявка принята, мы свяжемся с вами в ближайшее время.</p>';
-        });
-    </script>
+    });
+</script>
 
 </body>
-
 </html>
